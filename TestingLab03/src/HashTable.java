@@ -72,7 +72,14 @@ public class HashTable<T> {
 			if(index >= hashArray.length) {
 				index = index - hashArray.length;
 			}
-		}   // implement if indicator is 1
+		}else if(indicator == 1) {
+			index = this.h1(k) + (i*this.h2(k));
+			if(index >= hashArray.length) {
+				index = index - hashArray.length;
+				System.out.println("index is here: " + index); // THIS IS FOR DEBUG ERASE WHEN DONE!!!!
+			}
+			
+		}
 		
 		return index;
 	}
