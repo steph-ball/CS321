@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * @author steph
+ *
+ * @param <T>
+ */
 public class HashObject <T>{
 	
 	private T object;
@@ -49,7 +54,12 @@ public class HashObject <T>{
 		return probeCount;
 	}
 
+	/**
+	 * Returns the key 
+	 * @return
+	 */
 	public T getKey() {
-		return object;
+		T newO = object;
+		return newO;
 	}
 }
