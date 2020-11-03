@@ -8,6 +8,8 @@ public class HashTable<T> {
 	
 	HashObject[] hashArray;
 	private int indicator;
+	private int storedCount;
+	private int attempts;
 	
 	//Constructor
 	
@@ -17,6 +19,10 @@ public class HashTable<T> {
 	public HashTable(int m, int indicator) {
 		hashArray = new HashObject[m];
 		this.indicator = indicator;
+		storedCount = 0;
+		for(int i = 0; i < m; i++) {   // setting array to null
+			hashArray[i] = null;
+		}
 	}
 	
 	// Methods
@@ -25,9 +31,26 @@ public class HashTable<T> {
 	 * 
 	 * @param object
 	 */
-	public void addObject(T object) {
-		HashObject<T> hash = new HashObject(object);
+	public void addObject(HashObject<T> hash) {
+		attempts = 0;
+		boolean stored = false;
 		T key = hash.getKey();
+		
+		while(!stored) {
+			int index = this.getIndex(key.hashCode(),attempts);
+			if(hashArray[index] == null) {  //If null, array at this index is empty.
+				hashArray[index] = hash;
+				storedCount+=1;
+				stored = true;
+			}else if(!hashArray[index].equals(hash)) {
+				attempts += 1;
+				hash.incrementProbeCount();
+			}else if(hashArray[index].equals(hash)) {
+				hash.incrementDuplicateCount();
+				stored = true;
+			}
+		}
+		
 	}
 	
 	/**
@@ -47,7 +70,7 @@ public class HashTable<T> {
 	 * @return
 	 */
 	public int h1(int k) {
-		return positiveMod(k,hashArray.length);
+		return positiveMod(k,hashArray.length);  // k = key.hashcode()
 	}
 	
 	/**
@@ -56,7 +79,7 @@ public class HashTable<T> {
 	 * @return
 	 */
 	public int h2(int k) {
-		return 1 + positiveMod(k,hashArray.length -2);
+		return 1 + positiveMod(k,hashArray.length -2); // k = key.hashcode()
 	}
 	
 	/**

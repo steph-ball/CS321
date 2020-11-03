@@ -62,4 +62,20 @@ public class HashObject <T>{
 		T newO = object;
 		return newO;
 	}
+	
+	/**
+	 * Overriding equals method because I want to compare the objects 
+	 * in the hash, not the hash itself. 
+	 * @param object
+	 * @return
+	 */
+	public boolean equals(HashObject<T> object) {
+		T key1 = object.getKey();   
+		T key2 = this.getKey();
+		boolean compare = false;
+		if(key2.equals(key1)) {
+			compare = true;
+		}
+		return compare;
+	}
 }
