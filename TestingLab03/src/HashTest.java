@@ -12,7 +12,7 @@ public class HashTest {
 	 
 		PrimeFinder finder = new PrimeFinder();
 		RandomHashObjectGen gen = new RandomHashObjectGen();
-		//int m = 31;
+		//int m = 7;
 		int m = finder.primeLocater(95500, 96000);
 		int indicator = 0;
 		int n = (int) Math.round(m*loadFactor);
@@ -26,7 +26,9 @@ public class HashTest {
 			throw new Exception("Input cannot be greater than 3. Please re-enter");
 		}
 		
-		
+		if(inputType == 3) {
+			gen.openFile();
+		}
 		while(storedCount < n) {
 			if(inputType == 1) {
 				Integer genHash = gen.nextInteger();
@@ -44,10 +46,13 @@ public class HashTest {
 				doubleHash = new HashObject(genHash);
 				dataSource = "word-list";
 			} 
-		
+			
 			linearHashTable.addObject(linearHash);
 			doubleHashTable.addObject(doubleHash);
 			storedCount = linearHashTable.getStoredCount();
+		}
+		if(inputType == 3) {
+			gen.closeFile();
 		}
 	
 		if(debugLevel == 0) {
