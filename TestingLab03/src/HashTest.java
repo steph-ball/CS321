@@ -28,6 +28,7 @@ public class HashTest {
 		
 		if(inputType == 3) {
 			gen.openFile();
+			//openfile
 		}
 		while(storedCount < n) {
 			if(inputType == 1) {
