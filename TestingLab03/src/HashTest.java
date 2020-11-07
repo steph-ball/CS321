@@ -73,7 +73,9 @@ public class HashTest {
 			
 			if(debugLevel == 1) {
 				for(int i = 0; i < m; i++) {
+					if(doubleHashTable.getElement(i) != null) {
 					System.out.println(doubleHashTable.getElement(i));
+					}
 				}
 			}
 	}
