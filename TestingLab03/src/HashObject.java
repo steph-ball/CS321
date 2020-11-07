@@ -78,4 +78,9 @@ public class HashObject <T>{
 		}
 		return compare;
 	}
+	
+	public String toString() {
+		String str = ""+ object + " " + this.getDuplicateCount() + " " + this.getProbeCount();
+		return str;
+	}
 }

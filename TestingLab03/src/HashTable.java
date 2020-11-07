@@ -7,18 +7,19 @@
 public class HashTable<T> {
 	
 	HashObject[] hashArray;
-	private int indicator;
+	private int hashMode;
 	private int storedCount;
 	private int attempts;
+	private int totalProbeCount;
 	
 	//Constructor
 	
 	/**
 	 * 
 	 */
-	public HashTable(int m, int indicator) {
+	public HashTable(int m, int hashMode) {
 		hashArray = new HashObject[m];
-		this.indicator = indicator;
+		this.hashMode = hashMode;
 		storedCount = 0;
 		for(int i = 0; i < m; i++) {   // setting array to null
 			hashArray[i] = null;
@@ -45,18 +46,18 @@ public class HashTable<T> {
 			}else if(!hashArray[index].equals(hash)) {
 				attempts += 1;
 				hash.incrementProbeCount();
-			}else if(hashArray[index].equals(hash)) {
-				hash.incrementDuplicateCount();
+			}else {
+				System.out.println("Duplicate count");
+				hashArray[index].incrementDuplicateCount();
 				stored = true;
 			}
 		}
-		
 	}
 	
 	/**
 	 * 
 	 */
-	public int positiveMod(int dividend, int divisor) {
+	private int positiveMod(int dividend, int divisor) {
 		int value = dividend % divisor;
 		if(value < 0) {
 			value += divisor;
@@ -69,7 +70,7 @@ public class HashTable<T> {
 	 * @param k
 	 * @return
 	 */
-	public int h1(int k) {
+	private int h1(int k) {
 		return positiveMod(k,hashArray.length);  // k = key.hashcode()
 	}
 	
@@ -78,7 +79,7 @@ public class HashTable<T> {
 	 * @param k
 	 * @return
 	 */
-	public int h2(int k) {
+	private int h2(int k) {
 		return 1 + positiveMod(k,hashArray.length -2); // k = key.hashcode()
 	}
 	
@@ -88,22 +89,31 @@ public class HashTable<T> {
 	 * @param i
 	 * @return
 	 */
-	public int getIndex(int k, int i) {
+	private int getIndex(int k, int i) {
 		int index = 0; 
-		if(indicator == 0) {
-			index = this.h1(k) + i;
-			if(index >= hashArray.length) {
-				index = index - hashArray.length;
+		if(hashMode == 0) {
+			index = (this.h1(k) + i) % hashArray.length;
+		}else if(hashMode == 1) {
+			index = (this.h1(k) + (i*this.h2(k))) % hashArray.length;	
 			}
-		}else if(indicator == 1) {
-			index = this.h1(k) + (i*this.h2(k));
-			if(index >= hashArray.length) {
-				index = index - hashArray.length;
-				System.out.println("index is here: " + index); // THIS IS FOR DEBUG ERASE WHEN DONE!!!!
-			}
-			
-		}
-		
 		return index;
+	}
+	
+	public HashObject getElement(int index) {
+		return  hashArray[index];
+	}
+	
+	public int getStoredCount() {
+		return storedCount;
+	}
+	
+	public double getTotalNumProbes() {
+		totalProbeCount = 0;
+		for(int i = 0; i < hashArray.length; i++) {
+			if(hashArray[i] != null) {
+				totalProbeCount += hashArray[i].getProbeCount();
+			}
+		}
+		return totalProbeCount;
 	}
 }
