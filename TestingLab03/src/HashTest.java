@@ -19,6 +19,7 @@ public class HashTest {
 		HashTable linearHashTable = new HashTable(m, 0);
 		HashTable doubleHashTable = new HashTable(m,1);
 		int storedCount = linearHashTable.getStoredCount();
+		int totalInput = 0; 
 		HashObject linearHash = null, doubleHash = null;
 		String dataSource = null;
 		
@@ -47,7 +48,7 @@ public class HashTest {
 				doubleHash = new HashObject(genHash);
 				dataSource = "word-list";
 			} 
-			
+			totalInput++;
 			linearHashTable.addObject(linearHash);
 			doubleHashTable.addObject(doubleHash);
 			storedCount = linearHashTable.getStoredCount();
@@ -64,12 +65,12 @@ public class HashTest {
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Linear Hashing...");
-			System.out.println("Input " + storedCount + " elements, of which " + linearHashTable.getTotalDuplicates() + " duplicates");
+			System.out.println("Input " + totalInput + " elements, of which " + linearHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgLinearProbes);
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Double Hashing...");
-			System.out.println("Input " + doubleHashTable.getStoredCount() + " elements, of which " + doubleHashTable.getTotalDuplicates() + " duplicates");
+			System.out.println("Input " + totalInput + " elements, of which " + doubleHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
 		}
 	
