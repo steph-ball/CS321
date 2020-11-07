@@ -38,7 +38,6 @@ public class HashTable<T> {
 		T key = hash.getKey();
 		
 		while(!stored) {
-			System.out.println("Key: " + key);
 			int index = this.getIndex(key.hashCode(),attempts);
 			if(hashArray[index] == null) {  //If null, array at this index is empty.
 				hashArray[index] = hash;
@@ -48,7 +47,6 @@ public class HashTable<T> {
 				attempts += 1;
 				hash.incrementProbeCount();
 			}else {
-				System.out.println("Duplicate count");
 				hashArray[index].incrementDuplicateCount();
 				stored = true;
 			}
