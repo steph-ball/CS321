@@ -106,7 +106,7 @@ public class HashTable<T> {
 		return storedCount;
 	}
 	
-	public double getTotalNumProbes() {
+	public int getTotalNumProbes() {
 		totalProbeCount = 0;
 		for(int i = 0; i < hashArray.length; i++) {
 			if(hashArray[i] != null) {
@@ -114,5 +114,15 @@ public class HashTable<T> {
 			}
 		}
 		return totalProbeCount;
+	}
+	
+	public int getTotalDuplicates() {
+		int totalDuplicateCount = 0;
+		for (int i=0; i < hashArray.length; i++) {
+			if(hashArray[i] != null) {
+				totalDuplicateCount += hashArray[i].getDuplicateCount();
+			}
+		}
+		return totalDuplicateCount; 
 	}
 }

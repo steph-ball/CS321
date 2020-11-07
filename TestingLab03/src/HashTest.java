@@ -64,12 +64,12 @@ public class HashTest {
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Linear Hashing...");
-			System.out.println("Input " + storedCount + " elements, of which " + linearHash.getDuplicateCount() + " duplicates");
+			System.out.println("Input " + storedCount + " elements, of which " + linearHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgLinearProbes);
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Double Hashing...");
-			System.out.println("Input " + doubleHashTable.getStoredCount() + " elements, of which " + doubleHash.getDuplicateCount() + " duplicates");
+			System.out.println("Input " + doubleHashTable.getStoredCount() + " elements, of which " + doubleHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
 		}
 	
