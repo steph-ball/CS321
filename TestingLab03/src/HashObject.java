@@ -19,7 +19,7 @@ public class HashObject <T>{
 	public HashObject(T object) {
 		this.object = object;
 		this.duplicateCount = 0;
-		this.probeCount = 0;
+		this.probeCount = 1;
 	}
 	
 	// Methods
