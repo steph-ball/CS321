@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 
 public class HashTest {
 	public static void main(String[]args) throws Exception {
-		int debugLevel = 2;
+		int debugLevel = 0;
 		int inputType = Integer.parseInt(args[0]);
 		double loadFactor = Double.parseDouble(args[1]);
 		if(args.length > 2) {
