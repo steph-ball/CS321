@@ -57,7 +57,6 @@ public class HashTest {
 			gen.closeFile();
 		}
 	
-		if(debugLevel == 0) {
 			double avgLinearProbes = (linearHashTable.getTotalNumProbes() / n);
 			double avgDoubleProbes = (doubleHashTable.getTotalNumProbes() / n);
 			System.out.println("A good table size is found: " + m);
@@ -70,9 +69,12 @@ public class HashTest {
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Double Hashing...");
-			System.out.println("Input " + totalInput + " elements, of which " + doubleHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
-		}
-	
+			
+			if(debugLevel == 1) {
+				for(int i = 0; i < m; i++) {
+					System.out.println(doubleHashTable.getElement(i));
+				}
+			}
 	}
 }
