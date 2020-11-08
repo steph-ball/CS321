@@ -82,7 +82,7 @@ public class HashTest {
 				for(int i = 0; i < m; i++) {
 					if(linearHashTable.getElement(i) != null) {
 					//System.out.println("table[" + i + "]: " + linearHashTable.getElement(i));
-						rowText = rowText + "table[" + i + "]: " + linearHashTable.getElement(i) + "/n";
+						rowText = rowText + "table[" + i + "]: " + linearHashTable.getElement(i) + "\n";
 					}
 				}
 				outFile.print(rowText);
