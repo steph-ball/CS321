@@ -1,4 +1,7 @@
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class HashTest {
 	public static void main(String[]args) throws Exception {
@@ -72,11 +75,20 @@ public class HashTest {
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
 			
 			if(debugLevel == 1) {
+				File file = new File("filename");
+				PrintWriter outFile = new PrintWriter(new FileWriter(file));
+				
+				String rowText = "";
 				for(int i = 0; i < m; i++) {
 					if(linearHashTable.getElement(i) != null) {
-					System.out.println("table[" + i + "]: " + linearHashTable.getElement(i));
+					//System.out.println("table[" + i + "]: " + linearHashTable.getElement(i));
+						rowText = rowText + "table[" + i + "]: " + linearHashTable.getElement(i) + "/n";
 					}
 				}
+				outFile.print(rowText);
+				outFile.flush();
+				outFile.close();
+				
 			}
 	}
 }
