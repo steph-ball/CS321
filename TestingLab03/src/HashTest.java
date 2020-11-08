@@ -94,7 +94,7 @@ public class HashTest {
 				String doubleRowText = "";
 				for(int i = 0; i < m; i++) {
 					if(doubleHashTable.getElement(i) != null) {
-						rowText = rowText + "table[" + i + "]: " + doubleHashTable.getElement(i) + "\n";
+						doubleRowText = doubleRowText + "table[" + i + "]: " + doubleHashTable.getElement(i) + "\n";
 					}
 				}
 				outFile.print(doubleRowText);
