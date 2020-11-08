@@ -32,7 +32,7 @@ public class RandomHashObjectGen<T> {
 	}
 	
 	public void openFile() throws FileNotFoundException {
-		scan = new Scanner(new File("C:\\Users\\steph\\git\\CS321\\TestingLab03\\src\\dummyFile")); // DON'T FORGET TO CHANGE THIS!!!!
+		scan = new Scanner(new File("word-list"));
 	}
 	
 	public void closeFile() {

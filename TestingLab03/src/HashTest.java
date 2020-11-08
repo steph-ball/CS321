@@ -72,6 +72,7 @@ public class HashTest {
 			System.out.println();
 			System.out.println();
 			System.out.println("Using Double Hashing...");
+			System.out.println("Input " + totalInput + " elements, of which " + doubleHashTable.getTotalDuplicates() + " duplicates");
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
 			
 			if(debugLevel == 1) {
@@ -97,9 +98,9 @@ public class HashTest {
 						doubleRowText = doubleRowText + "table[" + i + "]: " + doubleHashTable.getElement(i) + "\n";
 					}
 				}
-				outFile.print(doubleRowText);
-				outFile.flush();
-				outFile.close();
+				doubleoutFile.print(doubleRowText);
+				doubleoutFile.flush();
+				doubleoutFile.close();
 				
 			}
 	}
