@@ -100,6 +100,7 @@ public class HashTest {
 				outFile.print(doubleRowText);
 				outFile.flush();
 				outFile.close();
+				
 			}
 	}
 }
