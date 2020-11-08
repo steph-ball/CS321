@@ -75,17 +75,29 @@ public class HashTest {
 			System.out.println("load factor = " + loadFactor + ", AVg. no. of probes " + avgDoubleProbes);                
 			
 			if(debugLevel == 1) {
-				File file = new File("filename");
+				File file = new File("linear-dump");
 				PrintWriter outFile = new PrintWriter(new FileWriter(file));
 				
 				String rowText = "";
 				for(int i = 0; i < m; i++) {
 					if(linearHashTable.getElement(i) != null) {
-					//System.out.println("table[" + i + "]: " + linearHashTable.getElement(i));
 						rowText = rowText + "table[" + i + "]: " + linearHashTable.getElement(i) + "\n";
 					}
 				}
 				outFile.print(rowText);
+				outFile.flush();
+				outFile.close();
+				
+				File doubleFile = new File("double-dump");
+				PrintWriter doubleoutFile = new PrintWriter(new FileWriter(doubleFile));
+				
+				String doubleRowText = "";
+				for(int i = 0; i < m; i++) {
+					if(linearHashTable.getElement(i) != null) {
+						rowText = rowText + "table[" + i + "]: " + doubleHashTable.getElement(i) + "\n";
+					}
+				}
+				outFile.print(doubleRowText);
 				outFile.flush();
 				outFile.close();
 				
